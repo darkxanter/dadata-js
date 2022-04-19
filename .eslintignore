@@ -1,0 +1,7 @@
+/dist
+/node_modules
+.eslintrc.js
+/*.js
+jest.setup.js
+/test/loaders/jest-loader.js
+/vite.config.ts
