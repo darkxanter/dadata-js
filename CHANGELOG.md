@@ -1,6 +1,6 @@
-## [DaData.ru](https://dadata.ru/) Suggestions
+## 0.1.0
 
-#### Реализованы типы и методы для:
+#### Реализовано:
 
 -   [Компании: Автодополнение при вводе («подсказки»)](https://dadata.ru/api/suggest/party/)
 -   [Компании: Организация по ИНН](https://dadata.ru/api/find-party/)
