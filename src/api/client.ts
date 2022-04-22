@@ -39,8 +39,8 @@ export default class ApiClient {
    *
    *
    */
-  suggestBank(request: DaDataBankRequest): Promise<DaDataSuggestion<DaDataBankInfo>[]> {
-    return this.makeRequest('suggest/bank', request)
+  suggestBank(query: string, options?: DaDataBankRequest): Promise<DaDataSuggestion<DaDataBankInfo>[]> {
+    return this.makeRequest('suggest/bank', { ...options, query })
   }
 
   /**
@@ -65,8 +65,11 @@ export default class ApiClient {
    * - ФИО руководителя компании;
    * - адресу до улицы.
    */
-  suggestOrganization(request: DaDataOrganizationRequest): Promise<DaDataSuggestion<DaDataOrganizationInfo>[]> {
-    return this.makeRequest('suggest/party', request)
+  suggestOrganization(
+    query: string,
+    options?: DaDataOrganizationRequest,
+  ): Promise<DaDataSuggestion<DaDataOrganizationInfo>[]> {
+    return this.makeRequest('suggest/party', { ...options, query })
   }
 
   /**

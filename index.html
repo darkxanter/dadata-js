@@ -19,7 +19,7 @@
             const list = document.querySelector('#suggestions')
 
             async function displaySuggestions(query) {
-                const suggestions = await apiClient.suggestOrganization({ query })
+                const suggestions = await apiClient.suggestOrganization(query)
                 list.innerHTML = ''
                 suggestions.forEach((element) => {
                     const li = document.createElement('li')

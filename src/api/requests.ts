@@ -1,7 +1,5 @@
 
 export interface DaDataRequest {
-  /** Текст запроса */
-  query: string
   /**
    * Количество результатов (максимум — 20)
    * @default 10

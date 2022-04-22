@@ -4,7 +4,7 @@ import { getApiClient } from './utils'
 describe('api test', () => {
   it('suggest/bank', async () => {
     const apiClient = getApiClient()
-    const suggestions = await apiClient.suggestBank({ query: 'сбер' })
+    const suggestions = await apiClient.suggestBank('сбер')
     expect(Array.isArray(suggestions)).toBeTruthy()
   })
 
@@ -16,7 +16,7 @@ describe('api test', () => {
 
   it('suggest/party', async () => {
     const apiClient = getApiClient()
-    const suggestions = await apiClient.suggestOrganization({ query: 'сбер' })
+    const suggestions = await apiClient.suggestOrganization('сбер')
     expect(Array.isArray(suggestions)).toBeTruthy()
   })
 
