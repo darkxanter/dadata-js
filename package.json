@@ -2,6 +2,7 @@
   "name": "@xanter/dadata",
   "license": "MIT",
   "version": "0.1.0",
+  "repository": "https://github.com/darkxanter/dadata-js",
   "files": [
     "dist"
   ],
