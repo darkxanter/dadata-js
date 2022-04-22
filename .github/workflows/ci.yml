@@ -54,4 +54,6 @@ jobs:
         run: nci
 
       - name: Build
+        env:
+          VITE_DADATA_TOKEN: ${{secrets.DADATA_TOKEN}}
         run: nr test
