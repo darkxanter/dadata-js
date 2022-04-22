@@ -16,7 +16,10 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "types": [
+      "vitest/importMeta"
+    ]
   },
   "include": [
     "src",

@@ -1,3 +1,8 @@
+export interface DaDataQuery {
+  /** Запрос */
+  query: string
+}
+
 
 export interface DaDataRequest {
   /**

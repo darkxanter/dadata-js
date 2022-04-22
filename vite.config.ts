@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import * as path from 'path'
 import dts from 'vite-plugin-dts'
 
-export default defineConfig({
+export default defineConfig(() => ({
   plugins: [
     dts({
       exclude: './src/vite-env.d.ts',
@@ -11,6 +11,7 @@ export default defineConfig({
   ],
   test: {
     environment: 'jsdom',
+    includeSource: ['src/**/*.{js,ts}'],
   },
   build: {
     lib: {
@@ -18,6 +19,5 @@ export default defineConfig({
       name: 'dadata',
       formats: ['cjs', 'es'],
     },
-    minify: false,
   },
-})
+}))
