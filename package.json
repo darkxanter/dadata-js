@@ -2,6 +2,17 @@
   "name": "@xanter/dadata",
   "license": "MIT",
   "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/dadata.es.js",
+  "main": "./dist/dadata.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/dadata.es.js",
+      "require": "./dist/dadata.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,12 +23,15 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/node": "^17.0.25",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.0",
+    "jsdom": "^19.0.0",
     "lint-staged": "^12.3.8",
+    "node-fetch": "^3.2.3",
     "prettier": "^2.6.2",
     "typescript": "^4.5.4",
     "vite": "^2.9.2",

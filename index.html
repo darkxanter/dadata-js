@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    Body Text
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
+    </head>
+    <body>
+        <input />
+        <ul id="suggestions"></ul>
+
+        <script type="module">
+            import ApiClient from '/src/api/client'
+
+            const apiClient = new ApiClient({ token: import.meta.env.VITE_DADATA_TOKEN })
+
+            const input = document.querySelector('input')
+            const list = document.querySelector('#suggestions')
+
+            async function displaySuggestions(query) {
+                const suggestions = await apiClient.suggestOrganization({ query })
+                list.innerHTML = ''
+                suggestions.forEach((element) => {
+                    const li = document.createElement('li')
+                    const pre = document.createElement('pre')
+                    li.appendChild(pre)
+                    pre.textContent = JSON.stringify(element, null, 2)
+                    list.appendChild(li)
+                })
+            }
+
+            input.addEventListener('input', (event) => {
+                const value = event.target.value
+                displaySuggestions(value)
+            })
+        </script>
+    </body>
 </html>
