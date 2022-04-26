@@ -6,6 +6,10 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "dadata",
+    "suggestions"
+  ],
   "module": "./dist/dadata.es.js",
   "main": "./dist/dadata.cjs.js",
   "types": "./dist/index.d.ts",
