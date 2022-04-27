@@ -1,3 +1,7 @@
+## 0.1.1
+- Добавлен второй параметр для в методе findOrganizationById
+- Исправлен тип у поля `branch_type` у интерфейса `DaDataOrganizationRequest`
+
 ## 0.1.0
 
 #### Реализовано:
