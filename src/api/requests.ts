@@ -3,7 +3,6 @@ export interface DaDataQuery {
   query: string
 }
 
-
 export interface DaDataRequest {
   /**
    * Количество результатов (максимум — 20)
@@ -43,7 +42,7 @@ export interface DaDataOrganizationRequest extends DaDataRequest {
   /**
    * Головная организация (MAIN) или филиал (BRANCH)
    */
-  branch_type?: string[]
+  branch_type?: string
   /**
    * Юрлицо (LEGAL) или индивидуальный предприниматель (INDIVIDUAL)
    */

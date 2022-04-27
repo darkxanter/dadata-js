@@ -86,8 +86,11 @@ export default class ApiClient {
    * Находит компанию или ИП по ИНН или ОГРН.
    * Возвращает все доступные сведения о компании, в отличие от метода suggest, который возвращает только базовые поля.
    */
-  findOrganizationById(query: string): Promise<DaDataSuggestion<DaDataOrganizationInfo>[]> {
-    return this.request('findById/party', { query })
+  findOrganizationById(
+    query: string,
+    options?: DaDataOrganizationRequest,
+  ): Promise<DaDataSuggestion<DaDataOrganizationInfo>[]> {
+    return this.request('findById/party', { ...options, query })
   }
 
   clearCache() {
