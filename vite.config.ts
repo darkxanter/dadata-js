@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig(() => ({
   plugins: [
     dts({
-      exclude: './src/vite-env.d.ts',
+      exclude: ['./src/vite-env.d.ts', './src/env.d.ts'],
     }),
   ],
   test: {

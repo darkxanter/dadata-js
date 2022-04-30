@@ -1,0 +1,11 @@
+input[type='radio'] {
+    margin: 6px;
+}
+fieldset {
+    width: 200px;
+    margin-bottom: 16px;
+}
+fieldset > label {
+    display: flex;
+    align-items: center;
+}
