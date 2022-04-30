@@ -9,7 +9,6 @@ import {
   DaDataAddressRequest,
   DaDataBankRequest,
   DaDataOrganizationRequest,
-  DaDataQuery,
   DaDataReverseGeolocateRequest,
 } from '../models/requests'
 

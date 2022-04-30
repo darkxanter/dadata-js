@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it } from 'vitest'
 import { checkResponse, getApiClient } from './utils'
 
 describe('api test', () => {
@@ -23,7 +23,6 @@ describe('api test', () => {
   it('findById/party', async () => {
     const apiClient = getApiClient()
     const suggestions = await apiClient.findOrganizationById('7707083893')
-    console.log(suggestions)
     checkResponse(suggestions)
   })
 
