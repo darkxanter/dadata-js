@@ -1,10 +1,11 @@
+import { DaDataAddressInfo } from '../models/address'
 import { DaDataBankInfo } from '../models/bank'
 import { DaDataOrganizationInfo } from '../models/organization'
 import { DaDataSuggestion } from '../models/suggestion'
 import { validateSuggestions } from '../utils/guards'
 import simpleHash from '../utils/hash'
 import { camelCaseReviver } from '../utils/json'
-import { DaDataBankRequest, DaDataOrganizationRequest, DaDataQuery } from './requests'
+import { DaDataAddressRequest, DaDataBankRequest, DaDataOrganizationRequest, DaDataQuery } from './requests'
 
 export interface ApiClientOptions {
   /**
@@ -18,7 +19,7 @@ export interface ApiClientOptions {
 
 type MethodType = 'suggest' | 'findById'
 type SuggestionsType = 'party' | 'bank'
-export type DaDataSuggestionsMethod = `${MethodType}/${SuggestionsType}`
+export type DaDataSuggestionsMethod = `${MethodType}/${SuggestionsType}` | 'suggest/address'
 
 export default class ApiClient {
   readonly endpoint: string
@@ -31,6 +32,13 @@ export default class ApiClient {
     this.endpoint = endpoint.replace(/\/$/, '')
     this.token = options?.token
     this.useCache = options?.cache ?? true
+  }
+
+  /**
+   * Ищет адреса по любой части адреса от региона до квартиры
+   */
+  suggestAddress(query: string, options?: DaDataAddressRequest): Promise<DaDataSuggestion<DaDataAddressInfo>[]> {
+    return this.request('suggest/address', { ...options, query })
   }
 
   /**

@@ -16,6 +16,10 @@ const apiOptions = [
     label: 'Банк',
     fn: (query: string) => apiClient.suggestBank(query),
   },
+  {
+    label: 'Адрес',
+    fn: (query: string) => apiClient.suggestAddress(query),
+  },
 ]
 const suggest = async (query: string) => {
   const value = document.querySelector<HTMLInputElement>('input[name="api"]:checked')?.value
