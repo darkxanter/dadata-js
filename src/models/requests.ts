@@ -141,3 +141,7 @@ export type DaDataAddressRequestGranularAddressType =
   | 'settlement'
   | 'street'
   | 'house'
+
+export interface DaDataReverseGeolocateRequest extends DaDataRequest, DaDataAddressRequestLocationGeo {
+  language?: 'ru' | 'en'
+}

@@ -2,10 +2,16 @@ import { DaDataAddressInfo } from '../models/address'
 import { DaDataBankInfo } from '../models/bank'
 import { DaDataOrganizationInfo } from '../models/organization'
 import { DaDataSuggestion } from '../models/suggestion'
-import { validateSuggestions } from '../utils/guards'
+import { isObjectEmpty, isRecord, validateSuggestions } from '../utils/guards'
 import simpleHash from '../utils/hash'
 import { camelCaseReviver } from '../utils/json'
-import { DaDataAddressRequest, DaDataBankRequest, DaDataOrganizationRequest, DaDataQuery } from './requests'
+import {
+  DaDataAddressRequest,
+  DaDataBankRequest,
+  DaDataOrganizationRequest,
+  DaDataQuery,
+  DaDataReverseGeolocateRequest,
+} from '../models/requests'
 
 export interface ApiClientOptions {
   /**
@@ -17,9 +23,9 @@ export interface ApiClientOptions {
   cache?: boolean
 }
 
-type MethodType = 'suggest' | 'findById'
-type SuggestionsType = 'party' | 'bank'
-export type DaDataSuggestionsMethod = `${MethodType}/${SuggestionsType}` | 'suggest/address'
+export type DaDataSuggestionsMethod =
+  | `${'suggest' | 'findById'}/${'party' | 'bank'}`
+  | `${'suggest' | 'findById' | 'geolocate'}/address`
 
 export default class ApiClient {
   readonly endpoint: string
@@ -39,6 +45,13 @@ export default class ApiClient {
    */
   suggestAddress(query: string, options?: DaDataAddressRequest): Promise<DaDataSuggestion<DaDataAddressInfo>[]> {
     return this.request('suggest/address', { ...options, query })
+  }
+
+  /**
+   * Находит ближайшие адреса (дома, улицы, города) по географическим координатам. Только для России.
+   */
+  geolocateAddress(request: DaDataReverseGeolocateRequest): Promise<DaDataSuggestion<DaDataAddressInfo>[]> {
+    return this.request('geolocate/address', request)
   }
 
   /**
@@ -105,11 +118,11 @@ export default class ApiClient {
     this.cache.clear()
   }
 
-  async request<TResult extends object>(
+  async request<TResult extends object, TParams extends object>(
     method: DaDataSuggestionsMethod,
-    params: DaDataQuery & Record<string, unknown>,
+    params: TParams,
   ): Promise<DaDataSuggestion<TResult>[]> {
-    if (!params.query) {
+    if (!isRecord(params) || isObjectEmpty(params)) {
       return []
     }
     if (this.useCache) {
