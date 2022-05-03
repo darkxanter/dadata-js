@@ -1,3 +1,7 @@
+## 0.2.0
+- Добавлено [API подсказок по адресам](https://dadata.ru/api/suggest/address/)
+- Добавлено [Обратное геокодирование](https://dadata.ru/api/geolocate/)
+
 ## 0.1.1
 - Добавлен второй параметр для в методе findOrganizationById
 - Исправлен тип у поля `branch_type` у интерфейса `DaDataOrganizationRequest`
